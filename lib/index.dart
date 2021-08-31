@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:mobilefirst/config/constant.dart';
 
 class Index extends StatelessWidget {
   @override
@@ -34,7 +35,9 @@ class Index extends StatelessWidget {
             ),
             Image(
               image: NetworkImage(
-                  'https://images.unsplash.com/photo-1540151812223-c30b3fab58e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'),
+                'https://images.unsplash.com/photo-1540151812223-c30b3fab58e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+              ),
+              height: size.height * 0.2,
             ),
             SizedBox(
               height: size.height * 0.05,
@@ -42,14 +45,15 @@ class Index extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(
-                    fontSize: 20,
+                    fontSize: sFont,
                   ),
-                  primary: Colors.amber[900],
+                  primary: pColor,
                   padding: EdgeInsets.all(20.0),
                   shape: StadiumBorder()),
               child: Text('LOGIN'),
               onPressed: () {
-                print("LOGIN!!");
+                print("สวัสดีครับ");
+                Navigator.pushNamed(context, 'login');
               },
             ),
             SizedBox(
@@ -58,14 +62,15 @@ class Index extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   textStyle: TextStyle(
-                    fontSize: 20,
+                    fontSize: sFont,
                   ),
-                  primary: Colors.amber[900],
+                  primary: sColor,
                   padding: EdgeInsets.all(20.0),
                   shape: StadiumBorder()),
               child: Text('SIGNUP'),
               onPressed: () {
-                print("LOGIN!!");
+                print("สมัครสมาชิก");
+                Navigator.pushNamed(context, 'register');
               },
             ),
           ],
