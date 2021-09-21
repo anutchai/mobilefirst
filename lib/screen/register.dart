@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobilefirst/backend/database.dart';
 import 'package:mobilefirst/config/constant.dart';
 
 class Register extends StatefulWidget {
@@ -143,7 +144,9 @@ class _RegisterState extends State<Register> {
       onPressed: () {
         if (formkey.currentState!.validate()) {
           formkey.currentState!.save();
-          print("ชื่อ: $name นามสกุล: $surname อีเมล: $email รหัส: $password");
+          var local = LocalDB();
+          local.Register(name, surname, email, password);
+          Navigator.pushNamed(context, 'login');
         }
       },
     );
