@@ -40,4 +40,20 @@ class LocalDB {
     dB.close();
     // print(data);
   }
+
+  Future<bool> Login(email, password) async {
+    var db = await this.ConnectDB();
+    var store = intMapStoreFactory.store('user');
+    var user = await store.find(db);
+
+    for (var item in user) {
+      // print(item['name']);
+      if (item['email'] == email && item['password'] == password) {
+        // print('success');
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
