@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:mobilefirst/index.dart';
 import 'package:mobilefirst/screen/dashboard.dart';
 import 'package:mobilefirst/screen/register.dart';
+import 'package:mobilefirst/screen/video.dart';
+import 'package:mobilefirst/screen/image.dart';
+import 'package:mobilefirst/screen/location.dart';
 
 import 'config/constant.dart';
 import 'screen/login.dart';
@@ -24,6 +27,9 @@ class Myapp extends StatelessWidget {
         'login': (context) => Login(),
         'register': (context) => Register(),
         'dashboard': (context) => Dashboard(),
+        'video': (context) => Video(),
+        'image': (context) => Images(),
+        'location': (context) => Location(),
       },
       home: Index(),
     );

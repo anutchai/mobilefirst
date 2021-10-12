@@ -47,7 +47,55 @@ class _DashboardState extends State<Dashboard> {
     return Container(
       child: Scaffold(
         drawer: Drawer(
-         
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Text('Menu Package'),
+                decoration: BoxDecoration(
+                  color: Colors.greenAccent,
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  'Video',
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                leading: Icon(Icons.video_call),
+                onTap: () {
+                  print('Menu Video');
+                  Navigator.pushNamed(context, 'video');
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Image',
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                leading: Icon(Icons.image),
+                onTap: () {
+                  print('Menu Image');
+                  Navigator.pushNamed(context, 'image');
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Location',
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                leading: Icon(Icons.map),
+                onTap: () {
+                  print('Menu Location');
+                  Navigator.pushNamed(context, 'location');
+                },
+              ),
+            ],
+          ),
         ),
         appBar: AppBar(
           title: Row(
@@ -61,7 +109,6 @@ class _DashboardState extends State<Dashboard> {
             ],
           ),
         ),
-        
         body: Column(
           children: [
             Text(data?.activity ?? "กำลังโหลด"),
