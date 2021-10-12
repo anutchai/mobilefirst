@@ -46,6 +46,9 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+        drawer: Drawer(
+         
+        ),
         appBar: AppBar(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -58,6 +61,7 @@ class _DashboardState extends State<Dashboard> {
             ],
           ),
         ),
+        
         body: Column(
           children: [
             Text(data?.activity ?? "กำลังโหลด"),
