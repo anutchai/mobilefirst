@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class FirbaseRegister extends StatefulWidget {
-  const FirbaseRegister({Key? key}) : super(key: key);
+class FirebaseRegister extends StatefulWidget {
+  const FirebaseRegister({Key? key}) : super(key: key);
 
   @override
-  _FirbaseRegisterState createState() => _FirbaseRegisterState();
+  _FirebaseRegisterState createState() => _FirebaseRegisterState();
 }
 
-class _FirbaseRegisterState extends State<FirbaseRegister> {
+class _FirebaseRegisterState extends State<FirebaseRegister> {
   var name, email, password;
   final formkey = GlobalKey<FormState>();
   @override
@@ -112,7 +113,67 @@ class _FirbaseRegisterState extends State<FirbaseRegister> {
   Widget btnSubmit() {
     return ElevatedButton(
       child: Text('Submit'),
-      onPressed: () {},
+      onPressed: () {
+        if (formkey.currentState!.validate()) {
+          formkey.currentState!.save();
+          registerFirebase();
+        }
+      },
     );
+  }
+
+  Future<void> registerFirebase() async {
+    try {
+      // สร้าง User ด้วย Email and Password
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((response) {
+        // print(response);
+        setupProfile();
+      });
+    } catch (e) {
+      print(e);
+      var error = '${e}';
+      myAlert(error);
+    }
+  }
+
+  Future<void> setupProfile() async {
+    var user = FirebaseAuth.instance.currentUser;
+    await user!.sendEmailVerification();
+
+    if (user != null) {
+      await user.updateDisplayName("anutchai").catchError((onError) {
+        print(onError);
+      });
+      await user.updatePhotoURL("www.google.com");
+      print(user.displayName);
+    }
+  }
+
+  void myAlert(dynamic msg) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: ListTile(
+              leading: Icon(
+                Icons.alarm_on,
+                color: Colors.red,
+                size: 48,
+              ),
+              title: Text("พบข้อผิดพลาด"),
+            ),
+            content: Text(msg),
+            actions: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("Close"),
+              ),
+            ],
+          );
+        });
   }
 }

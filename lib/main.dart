@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mobilefirst/index.dart';
@@ -11,7 +12,11 @@ import 'package:mobilefirst/screen/location.dart';
 import 'config/constant.dart';
 import 'screen/login.dart';
 
-void main() {
+Future<void> main() async {
+  // กำหนดค่าเริ่มต้นในการเชื่อมต่อไปยัง Firebase โดยใช้ package Firebase Core
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(Myapp());
 }
 
@@ -26,7 +31,7 @@ class Myapp extends StatelessWidget {
       ),
       routes: {
         'login': (context) => Login(),
-        'register': (context) => FirbaseRegister(),
+        'register': (context) => FirebaseRegister(),
         'dashboard': (context) => Dashboard(),
         'video': (context) => Video(),
         'image': (context) => Images(),
