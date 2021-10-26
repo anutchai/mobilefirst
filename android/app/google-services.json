@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1067962125693",
+    "project_id": "mobileced-92004",
+    "storage_bucket": "mobileced-92004.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067962125693:android:99b85b43a1f7aa49b19014",
+        "android_client_info": {
+          "package_name": "com.example.mobilefirst"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067962125693-5cl0q1ap2idof8usncb0odhte9s92vom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBuUW9a3TJExfC-JEv91MosJlKtcQJKOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067962125693-5cl0q1ap2idof8usncb0odhte9s92vom.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
