@@ -2,6 +2,7 @@
   "project_info": {
     "project_number": "1067962125693",
     "project_id": "mobileced-92004",
+    "firebase_url": "https://mobileced-92004-default-rtdb.asia-southeast1.firebasedatabase.app/",
     "storage_bucket": "mobileced-92004.appspot.com"
   },
   "client": [

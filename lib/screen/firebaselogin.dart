@@ -1,17 +1,38 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
+import 'package:mobilefirst/screen/dashboard.dart';
 
-class FirebaseLogins extends StatefulWidget {
-  const FirebaseLogins({Key? key}) : super(key: key);
+class FirebaseLogin extends StatefulWidget {
+  const FirebaseLogin({Key? key}) : super(key: key);
 
   @override
-  _FirebaseLoginsState createState() => _FirebaseLoginsState();
+  _FirebaseLoginState createState() => _FirebaseLoginState();
 }
 
-class _FirebaseLoginsState extends State<FirebaseLogins> {
+class _FirebaseLoginState extends State<FirebaseLogin> {
   var email, password;
   final formKey = GlobalKey<FormState>();
+
+  Future<void> checkUser() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        print('success');
+
+        // การสั่งให้มันเปลี่ยนไปหน้าใหม่
+        MaterialPageRoute materialPageRoute =
+            MaterialPageRoute(builder: (BuildContext context) => Dashboard());
+        Navigator.of(context).pushAndRemoveUntil(
+            materialPageRoute, (Route<dynamic> route) => false);
+      }).catchError((onError) {
+        print(onError);
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +106,8 @@ class _FirebaseLoginsState extends State<FirebaseLogins> {
                         side: BorderSide(color: pColor)),
                     onPressed: () {
                       formKey.currentState!.save();
+                      print("login");
+                      checkUser();
                     },
                     color: pColor,
                     textColor: Colors.white,

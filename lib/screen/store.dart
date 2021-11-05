@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
+import 'package:mobilefirst/screen/adddata.dart';
+import 'package:mobilefirst/screen/template/adddata.dart';
 
-class Stores extends StatefulWidget {
-  const Stores({Key? key}) : super(key: key);
+class Store extends StatefulWidget {
+  const Store({Key? key}) : super(key: key);
 
   @override
-  _StoresState createState() => _StoresState();
+  _StoreState createState() => _StoreState();
 }
 
-class _StoresState extends State<Stores> {
+class _StoreState extends State<Store> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Stores"),
+          title: Text("Store"),
         ),
         body: TabBarView(
           children: [
-            Container(),
-            Container(),
+            AddData(),
+            Text('Page2'),
           ],
         ),
         bottomNavigationBar: Container(
-          color: pColor,
+          color: Colors.pink,
           child: TabBar(
-            indicatorColor: Colors.redAccent,
+            indicatorColor: Colors.blue,
             labelColor: Colors.white,
             tabs: [
               Tab(
@@ -34,7 +36,7 @@ class _StoresState extends State<Stores> {
               ),
               Tab(
                 text: "View Data",
-              )
+              ),
             ],
           ),
         ),

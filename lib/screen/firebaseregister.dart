@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mobilefirst/screen/firebaselogin.dart';
 
 class FirebaseRegister extends StatefulWidget {
   const FirebaseRegister({Key? key}) : super(key: key);
@@ -130,6 +131,11 @@ class _FirebaseRegisterState extends State<FirebaseRegister> {
           .then((response) {
         // print(response);
         setupProfile();
+        // การสั่งให้มันเปลี่ยนไปหน้าใหม่
+        MaterialPageRoute materialPageRoute = MaterialPageRoute(
+            builder: (BuildContext context) => FirebaseLogin());
+        Navigator.of(context).pushAndRemoveUntil(
+            materialPageRoute, (Route<dynamic> route) => false);
       });
     } catch (e) {
       print(e);

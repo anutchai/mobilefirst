@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 import 'package:mobilefirst/index.dart';
 import 'package:mobilefirst/screen/dashboard.dart';
+import 'package:mobilefirst/screen/firebaselogin.dart';
 import 'package:mobilefirst/screen/firebaseregister.dart';
 import 'package:mobilefirst/screen/register.dart';
+import 'package:mobilefirst/screen/store.dart';
 import 'package:mobilefirst/screen/video.dart';
 import 'package:mobilefirst/screen/image.dart';
 import 'package:mobilefirst/screen/location.dart';
@@ -30,12 +32,13 @@ class Myapp extends StatelessWidget {
         secondaryHeaderColor: sColor,
       ),
       routes: {
-        'login': (context) => Login(),
+        'login': (context) => FirebaseLogin(),
         'register': (context) => FirebaseRegister(),
         'dashboard': (context) => Dashboard(),
         'video': (context) => Video(),
         'image': (context) => Images(),
         'location': (context) => Location(),
+        'store': (context) => Store(),
       },
       home: Index(),
     );

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:mobilefirst/config/constant.dart';
 
-class AddData1 extends StatefulWidget {
-  const AddData1({Key? key}) : super(key: key);
+class AddData extends StatefulWidget {
+  const AddData({Key? key}) : super(key: key);
 
   @override
-  _AddData1State createState() => _AddData1State();
+  _AddDataState createState() => _AddDataState();
 }
 
-class _AddData1State extends State<AddData1> {
+class _AddDataState extends State<AddData> {
   // ประกาศตัวแปรสำหรับการเพิ่มสินค้า
   String? name, price, status;
   final formKey = GlobalKey<FormState>();
