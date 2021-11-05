@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
 import 'package:mobilefirst/screen/adddata.dart';
 import 'package:mobilefirst/screen/template/adddata.dart';
+import 'package:mobilefirst/screen/viewdata.dart';
 
 class Store extends StatefulWidget {
   const Store({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _StoreState extends State<Store> {
         body: TabBarView(
           children: [
             AddData(),
-            Text('Page2'),
+            ViewData(),
           ],
         ),
         bottomNavigationBar: Container(

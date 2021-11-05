@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:mobilefirst/config/constant.dart';
 
@@ -12,6 +13,23 @@ class _AddDataState extends State<AddData> {
   // ประกาศตัวแปรสำหรับการเพิ่มสินค้า
   String? name, price, status;
   final formKey = GlobalKey<FormState>();
+
+  // สร้าง Object โดยกำหนดที่ไป child ชื่อ store
+  final dbfirebase = FirebaseDatabase.instance.reference().child('store');
+
+  Future<void> createData() async {
+    dbfirebase
+        .push()
+        .set({
+          'name': name,
+          'price': price,
+          'status': status,
+        })
+        .then((value) => print('Success'))
+        .catchError((onError) {
+          print(onError);
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +131,7 @@ class _AddDataState extends State<AddData> {
             print(name);
             print(price);
             print(status);
-
+            createData();
             formKey.currentState!.reset();
           }
         },
